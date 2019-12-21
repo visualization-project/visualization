@@ -1,0 +1,30 @@
+{
+  "id": "1566861",
+  "name": "可视化系统",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3248646",
+      "name": "折线图",
+      "font_class": "zhexiantu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "3832842",
+      "name": "柱形图",
+      "font_class": "zhuxingtu",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "7443928",
+      "name": "饼图",
+      "font_class": "zu",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    }
+  ]
+}

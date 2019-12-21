@@ -1,0 +1,14 @@
+.cursor {
+  cursor: pointer;
+}
+
+.active {
+  background: #ccc;
+}
+
+.ace_editor {
+  height: 500px!important;
+  .ace_content {
+    height: 500px!important;
+  }
+}
