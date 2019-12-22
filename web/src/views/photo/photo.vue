@@ -8,30 +8,40 @@
       </el-select>
       <p class="data-list">字段名</p>
       <ul>
-        <li v-for="item in 10" :key="item">
-          <el-tag class="li-tag">字段1</el-tag>
-        </li>
+        <draggable class="list-group" :list="list" group="field" @change="log">
+          <li v-for="item in list" :key="item.name">
+            <el-tag class="li-tag">{{ item.name }}</el-tag>
+          </li>
+        </draggable>
       </ul>
     </el-aside>
     <el-container class="content">
       <el-header style="height: 100px;">
         <ul>
           <li class="list">维度</li>
-          <li>
-            <el-tag>字段1</el-tag>
+          <li class="list-item">
+            <draggable class="list-group" :list="list1" group="field" @change="log">
+              <el-tag class="tag" v-for="(item, index) in list1" :key="index">{{ item.name }}</el-tag>
+            </draggable>
           </li>
           <li class="list">数值</li>
-          <li>
-            <el-tag>字段2</el-tag>
+          <li class="list-item">
+            <draggable class="list-group" :list="list2" group="field" @change="log">
+              <el-tag class="tag" v-for="(item, index) in list2" :key="index">{{ item.name }}</el-tag>
+            </draggable>
           </li>
         </ul>
       </el-header>
-      <el-main style="height: 400px;">
-        <Content :json="json"></Content>
+      <el-main style="height: 400px;margin-top: 20px;">
+        <Table v-if="chart === 'table'" :tableHead="json" :tableData="tableData"></Table>
+        <Content v-if="chart !== 'table'" :json="json"></Content>
       </el-main>
     </el-container>
     <el-aside width="100px" class="right">
       <ul>
+        <li @click="handleChart('table')" class="li" id="table">
+          <div class="iconfont iconbiaoge cursor"></div>
+        </li>
         <li @click="handleChart('line')" class="li" id="line">
           <div class="iconfont iconzhexiantu cursor"></div>
         </li>
@@ -55,16 +65,18 @@
 <script>
 // vue-grid-layout 和 vuedraggable 拖拽组件
 import Content from './component/content'
+import Table from './component/table'
 import BaseCharts from '@/libs/charts.js'
 import vueJsonEditor from 'vue-json-editor'
 import { mapMutations } from 'vuex'
 import { SET_CHARTS_JSON } from '@/store/mutation-types.js'
+import draggable from 'vuedraggable'
 
 // 基础图表类型
-const chartType = ['line', 'bar', 'pie']
+const chartType = ['line', 'bar', 'pie', 'table']
 
 export default {
-  components: { Content, vueJsonEditor },
+  components: { Content, vueJsonEditor, draggable, Table },
   data () {
     return {
       region: '',
@@ -75,7 +87,58 @@ export default {
       json: {
         msg: 'demo of jsoneditor'
       },
-      editJson: {} // 编辑时显示
+      editJson: {}, // 编辑时显示
+      list: [
+        { name: '字段1' },
+        { name: '字段2' },
+        { name: '字段3' },
+        { name: '字段4' },
+        { name: '字段5' }
+      ],
+      list1: [],
+      list2: [],
+      // 表格数据
+      tableData: [{
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-04',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1517 弄'
+      }, {
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1519 弄'
+      }, {
+        date: '2016-05-03',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1516 弄'
+      }]
     }
   },
   watch: {
@@ -89,6 +152,7 @@ export default {
     ]),
     // 选中当前图表高亮
     handleChart (charts) {
+      this.$forceUpdate()
       for (let i = 0; i < chartType.length; i++) {
         let chart = document.getElementById(chartType[i])
         chart.style.backgroundColor = '#fff'
@@ -96,7 +160,8 @@ export default {
       const chart = document.getElementById(charts)
       chart.style.backgroundColor = '#ccc'
       this.chart = charts
-      this.json = BaseCharts[this.chart]
+      // this.$set(this.json, BaseCharts[this.chart])
+      this.json = JSON.parse(JSON.stringify(BaseCharts[this.chart]))
     },
     // 打开弹窗
     handleDialog () {
@@ -109,10 +174,13 @@ export default {
       this.SET_CHARTS_JSON(JSON.parse(JSON.stringify(value)))
       this.editJson = value
       this.dialog = false
-      // console.log('value:', value)
     },
     onError (value) {
       console.log('value:', value)
+    },
+    // 拖拽字段
+    log (evt) {
+      console.log(this.list1, this.list2)
     }
   }
 }
@@ -131,7 +199,15 @@ export default {
   .content{
     text-align: left;
     .list {
-      margin: 5px 0;
+      margin: 2px 0;
+      height: 20px;
+    }
+    .list-item {
+      height: 32px;
+      border: .1px solid #ccc;
+      .tag {
+        margin-right: 10px;
+      }
     }
   }
   .right {

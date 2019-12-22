@@ -20,6 +20,13 @@
       "unicode_decimal": 58934
     },
     {
+      "icon_id": "4878739",
+      "name": "表格",
+      "font_class": "biaoge",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
       "icon_id": "7443928",
       "name": "饼图",
       "font_class": "zu",

@@ -165,7 +165,21 @@ const charts = {
         ]
       }
     ]
-  }
+  },
+  // 表格
+  table: [{
+    prop: 'date',
+    label: '时间',
+    width: ''
+  }, {
+    prop: 'name',
+    label: '姓名',
+    width: ''
+  }, {
+    prop: 'address',
+    label: '地址',
+    width: ''
+  }]
 }
 
 export default charts

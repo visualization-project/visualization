@@ -20,10 +20,14 @@ export default {
   watch: {
     json: {
       handler (val) {
-        this.json = val
-        this.getCharts(val)
+        this.$nextTick(() => {
+          // console.log(val)
+          this.json = val
+          this.getCharts(val)
+        })
       },
-      deep: true
+      deep: true,
+      immediate: true
     },
     getChartsJson: {
       handler (val) {
@@ -41,6 +45,7 @@ export default {
   },
   methods: {
     getCharts (json = {}) {
+      console.log(json)
       this.charts = Echarts.init(document.getElementById('charts'))
       if (Object.getOwnPropertyNames(json) !== 0) {
         this.charts.clear()
