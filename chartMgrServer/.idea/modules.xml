@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/chart-api/chart-api.iml" filepath="$PROJECT_DIR$/chart-api/chart-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chart-common/chart-common.iml" filepath="$PROJECT_DIR$/chart-common/chart-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chart-model/chart-model.iml" filepath="$PROJECT_DIR$/chart-model/chart-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chart-parent/chart-parent.iml" filepath="$PROJECT_DIR$/chart-parent/chart-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chart-utils/chart-utils.iml" filepath="$PROJECT_DIR$/chart-utils/chart-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-charting/service-charting.iml" filepath="$PROJECT_DIR$/service-charting/service-charting.iml" />
+    </modules>
+  </component>
+</project>

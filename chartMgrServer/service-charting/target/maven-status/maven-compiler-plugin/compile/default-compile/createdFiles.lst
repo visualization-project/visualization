@@ -1,0 +1,4 @@
+com\chart\charting\ChartingApplication.class
+com\chart\charting\controller\ChartInstanceController.class
+com\chart\charting\service\ChartInstanceService.class
+com\chart\charting\dao\ChartInstanceRepository.class
