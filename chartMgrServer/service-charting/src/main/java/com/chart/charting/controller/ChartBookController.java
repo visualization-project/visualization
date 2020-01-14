@@ -22,7 +22,7 @@ public class ChartBookController implements ChartBookControllerApi {
 
     @Override
     @GetMapping("/list")
-    public List<ChartBook> findAll() {
+    public ResponseResult findAll() {
         return chartBookService.findAll();
     }
 
@@ -30,5 +30,23 @@ public class ChartBookController implements ChartBookControllerApi {
     @PostMapping("/add")
     public ResponseResult addChartBook(@RequestBody ChartBook chartBook) {
         return chartBookService.addChartBook( chartBook );
+    }
+
+    @Override
+    @GetMapping("/find/{id}")
+    public ResponseResult findChartBook(@PathVariable("id") String id) {
+        return chartBookService.findChartBooks( id );
+    }
+
+    @Override
+    @PostMapping("/update")
+    public ResponseResult updateChartBook(@RequestBody ChartBook chartBook) {
+        return chartBookService.updateCharBook( chartBook );
+    }
+
+    @Override
+    @PostMapping
+    public ResponseResult deleteChartBook(@PathVariable("id") String id) {
+        return chartBookService.deleteChartBook( id );
     }
 }

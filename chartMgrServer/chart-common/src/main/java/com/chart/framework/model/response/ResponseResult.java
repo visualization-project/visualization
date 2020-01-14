@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 /**
  * @Author: mrt.
  * @Description:
@@ -23,6 +25,9 @@ public class ResponseResult implements Response {
 
     //提示信息
     String message;
+
+    //集合对象
+    Object result;
 
     public ResponseResult(ResultCode resultCode){
         this.success = resultCode.success();
