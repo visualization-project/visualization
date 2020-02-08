@@ -1,0 +1,16 @@
+@function isvh ($px) {
+  @return ($px / 1080) * 100 + vh
+}
+@function isvw ($px) {
+  @return ($px / 1920) * 100 + vw
+}
+
+.el-card {
+  height: 100%;
+  .el-card__header {
+    padding: isvh(8) isvw(5);
+  }
+  .el-card__body {
+    padding: isvh(5);
+  }
+}

@@ -1,22 +1,37 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Layout from '../layout'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    redirect: '/home',
+    component: Layout,
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: Home
+      },
+      {
+        path: '/photo',
+        name: 'photo',
+        component: () => import('../views/photo/photo.vue')
+      },
+      {
+        path: '/map',
+        name: 'map',
+        component: () => import('../views/map/map.vue')
+      }
+    ]
   },
   {
-    path: '/photo',
-    name: 'photo',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../views/photo/photo.vue')
+    path: '/preview',
+    name: 'preview',
+    component: () => import('../views/preview/preview.vue')
   }
 ]
 

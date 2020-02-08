@@ -9,6 +9,8 @@ import './style/index.scss'
 import './assets/iconfont/iconfont.css'
 // 格式化 json 工具
 import 'jsoneditor/dist/jsoneditor.min.css'
+// mockjs
+require('./mock/index')
 
 Vue.use(Element)
 Vue.config.productionTip = false

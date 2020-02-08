@@ -7,6 +7,10 @@
       class="el-menu-vertical-demo">
       <el-menu-item index="/photo">
         <i class="el-icon-menu"></i>
+        <span slot="title">图表页</span>
+      </el-menu-item>
+      <el-menu-item index="/map">
+        <i class="el-icon-menu"></i>
         <span slot="title">图册页</span>
       </el-menu-item>
     </el-menu>
