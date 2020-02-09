@@ -13,7 +13,8 @@ module.exports = {
     hot: true,
     proxy: {
       '/api': {
-        target: 'http://192.168.43.105:21001/', // 测试
+        // target: 'http://192.168.43.105:21001/', // 测试
+        target: 'http://localhost:21001/', // 测试
         ws: true,
         changeOrigin: true,
         pathRewrite: {

@@ -4,8 +4,14 @@ import { post, get } from '../index'
 const apiChartBookAdd = (params) => post('/chart-book/add', params)
 // 列表
 const apiChartBookList = (params) => get('/chart-book/list', params)
+// 删除
+const apiChartBookDelete = (params) => post('/chart-book/delete/' + params)
+// 修改
+const apiChartBookUpdate = (params) => post('/chart-book/update', params)
 
 export {
   apiChartBookAdd,
-  apiChartBookList
+  apiChartBookList,
+  apiChartBookDelete,
+  apiChartBookUpdate
 }
